@@ -30,9 +30,10 @@ export_list = [
     'uri': mongolab,
     'collections': [
       #'fblogs',
-      'fblogs2',
-      'fblogs3',
-      'fblogs4'
+      #'fblogs2',
+      #'fblogs3',
+      'fblogs4',
+      'fblogs5'
     ],
   }
 ]
