@@ -30,6 +30,10 @@ get-logs-fblogin-collection = (callback) ->
   get-mongo-db (db) ->
     callback db.collection('fblogin'), db
 
+get-logs-quiz-collection = (callback) ->
+  get-mongo-db (db) ->
+    callback db.collection('quiz'), db
+
 excludeid = (data) ->
   output = {[k,v] for k,v of data}
   if output['_id']?
@@ -37,7 +41,7 @@ excludeid = (data) ->
   return output
 
 insert-data = (data, callback) ->
-  get-logs-fblogin-collection (logs, db) ->
+  get-logs-quiz-collection (logs, db) ->
     #logs.save data, (err, results) ->
     #  console.log err
     #  console.log results

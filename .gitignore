@@ -1,5 +1,7 @@
-mongo*.json
-.mongourls.json
-.mongourls.json.ls
+/dump_*
+/mongodbstore
+/mongo*.json
+/.mongourls.json
+/.mongourls.json.ls
 .DS_Store
 node_modules

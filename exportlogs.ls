@@ -12,7 +12,9 @@ datecmd = 'date'
 if fs.existsSync('/usr/local/bin/gdate')
   datecmd = '/usr/local/bin/gdate'
 
-outfileend = exec(datecmd + ' --rfc-3339=seconds').stdout.trim().split(' ').join('_') + '.json'
+curdate = exec(datecmd + ' --rfc-3339=seconds').stdout.trim()
+outfileend = curdate.split(' ').join('_') + '.json'
+dumpdir = 'dump_' + curdate
 
 mongourls = JSON.parse fs.readFileSync('.mongourls.json', 'utf-8')
 # we can get these urls via "heroku config" command
@@ -23,7 +25,7 @@ export_list = [
   {
     'outfilebase': 'mongohq',
     'uri': mongohq,
-    'collections': ['logs', 'emaillogs', 'vars', 'events', 'conditions', 'fs.chunks', 'fs.files'],
+    'collections': ['logs', 'emaillogs', 'vars', 'events', 'conditions', 'fblogin', 'quiz', 'fs.chunks', 'fs.files'],
   },
   {
     'outfilebase': 'mongolab',
@@ -33,7 +35,8 @@ export_list = [
       #'fblogs2',
       #'fblogs3',
       'fblogs4',
-      'fblogs5'
+      'fblogs5',
+      'fblogs6'
     ],
   }
 ]
@@ -47,6 +50,7 @@ mkexport = (outfilebase, uri, collection) ->
   user = login['username']
   passwd = login['password']
   run('mongoexport -h ' + host + ' -d ' + db + ' -u ' + user + ' -p ' + passwd + " -c " + collection + " -o '" + outfile + "'")
+  run('mongodump -h ' + host + ' -d ' + db + ' -u ' + user + ' -p ' + passwd + " -c " + collection + " -o '" + dumpdir + "'")
 
 
 for export_info in export_list
