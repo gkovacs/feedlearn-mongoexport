@@ -3,5 +3,7 @@
 /mongo*.json
 /.mongourls.json
 /.mongourls.json.ls
+.ipynb_checkpoints
 .DS_Store
 node_modules
+*.pyc

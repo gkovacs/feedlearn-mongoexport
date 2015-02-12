@@ -23,21 +23,38 @@ mongolab = mongourls['mongolab']
 
 export_list = [
   {
-    'outfilebase': 'mongohq',
-    'uri': mongohq,
-    'collections': ['logs', 'emaillogs', 'vars', 'events', 'conditions', 'fblogin', 'quiz', 'fs.chunks', 'fs.files'],
-  },
-  {
-    'outfilebase': 'mongolab',
-    'uri': mongolab,
+    'outfilebase': 'mongohq'
+    'uri': mongohq
     'collections': [
-      #'fblogs',
-      #'fblogs2',
-      #'fblogs3',
-      'fblogs4',
-      'fblogs5',
-      'fblogs6'
-    ],
+      #'logs'
+      #'logs2'
+      'logs3'
+      'emaillogs'
+      'vars'
+      'events'
+      'conditions'
+      'fblogin'
+      'quiz'
+      'fs.chunks'
+      'fs.files'
+    ]
+  }
+  {
+    'outfilebase': 'mongolab'
+    'uri': mongolab
+    'collections': [
+      #'fblogs'
+      #'fblogs2'
+      #'fblogs3'
+      #'fblogs4'
+      #'fblogs5'
+      #'fblogs6'
+      #'fblogs7'
+      #'fblogs8'
+      #'fblogs9'
+      #'fblogs10'
+      'fblogs11'
+    ]
   }
 ]
 
